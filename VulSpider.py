@@ -536,7 +536,7 @@ def send_mail_163(to_addrs, mail_Subject, mail_content, type='plain'):
             pass
 
 # qq邮箱
-def sendDingTalkMessage(title,messageUrl)
+def sendDingTalkMessage(title,messageUrl):
     url = "https://oapi.dingtalk.com/robot/send?access_token=6e6b251ed6b41f331651904bf58e30af44943f485e1803ddb3ad599d5840ce12"
     data = {}
     data['msgtype'] = 'link'
