@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import smtplib
+
 from email.mime.text import MIMEText
 from email.header import Header
 
@@ -12,7 +13,7 @@ import time
 # 正则
 import re
 # ------
-import urllib2
+import urllib2,json
 import urllib  # 用于url编码
 import cookielib  # cookie管理
 
@@ -535,7 +536,25 @@ def send_mail_163(to_addrs, mail_Subject, mail_content, type='plain'):
             pass
 
 # qq邮箱
+def sendDingTalkMessage(title,messageUrl)
+    url = "https://oapi.dingtalk.com/robot/send?access_token=6e6b251ed6b41f331651904bf58e30af44943f485e1803ddb3ad599d5840ce12"
+    data = {}
+    data['msgtype'] = 'link'
+    data['link'] = {}
+    data['link']['title'] = title
+    data['link']['text'] = ''
+    data['link']['messageUrl'] = messageUrl
+    data = json.dumps(data)
+    head = {"Content-Type": "application/json"}
+    request = urllib2.Request(url=url, headers=head)
+    request.get_method = lambda: "POST"
+    httpRes = urllib2.urlopen(request, data)
+    content = httpRes.read()
+    httpRes.close()
+    print content
+
 def send_mail_A(to_addrs, mail_Subject, mail_content, type='plain'):
+    sendDingTalkMessage(mail_Subject,mail_content)
     _user = 'user@qq.com'
     _pwd = 'pass'
 
